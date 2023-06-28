@@ -4,12 +4,18 @@
   border: 1px solid red;
 }
 
-.cellFood {
+.cellFirstFood {
   background-color: white;
-  border-color: white;
+}
+
+.cellSecondFood {
+  background-color: blue;
+}
+
+.cellThirdFood {
+  background-color: orange;
 }
 
 .cellSnake {
   background-color: green;
-  border-color: green;
 }
