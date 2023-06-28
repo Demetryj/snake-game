@@ -6,6 +6,7 @@ export const Cell = ({
   cellSecondFood,
   cellThirdFood,
   cellSnake,
+  data,
 }) => {
   return (
     <div
@@ -15,6 +16,7 @@ export const Cell = ({
         [css.cellThirdFood]: cellThirdFood,
         [css.cellSnake]: cellSnake,
       })}
+      data-action={data}
     ></div>
   );
 };
