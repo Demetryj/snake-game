@@ -6,9 +6,19 @@ let food = {
   y: Math.floor(Math.random() * FIELD_SIZE),
 };
 
+let typeOfFood = 1;
+
+const chooseFood = () => Math.floor(Math.random() * (30 - 1) + 1);
+
 const getCell = (x, y, snake) => {
   if (food.x === x && food.y === y) {
-    return <Cell cellFood />;
+    if (typeOfFood <= 10) {
+      return <Cell cellFirstFood />;
+    } else if (typeOfFood > 20) {
+      return <Cell cellSecondFood />;
+    } else {
+      return <Cell cellThirdFood />;
+    }
   }
 
   for (const segment of snake) {
@@ -43,6 +53,7 @@ const nextSnakePosition = (snake, direction, incrementScore) => {
 
   if (eatFood(newHeadPosition, food)) {
     incrementScore();
+    typeOfFood = chooseFood();
     food = {
       x: Math.floor(Math.random() * FIELD_SIZE),
       y: Math.floor(Math.random() * FIELD_SIZE),
