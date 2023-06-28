@@ -1,0 +1,15 @@
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid red;
+}
+
+.cellFood {
+  background-color: white;
+  border-color: white;
+}
+
+.cellSnake {
+  background-color: green;
+  border-color: green;
+}
