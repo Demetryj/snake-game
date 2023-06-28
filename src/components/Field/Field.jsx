@@ -5,7 +5,7 @@ import { useInterval } from "../../hooks/useInterval";
 import { FIELD_ROW, DIRECTION } from "../../constants/constants";
 import { getCell, nextSnakePosition } from "../../utils//moveSnake";
 
-export const Field = () => {
+export const Field = ({ incrementScore }) => {
   const [snake, setSnake] = useState([{ x: 5, y: 5 }]);
   const [direction, setDirection] = useState(DIRECTION.RIGHT);
 
@@ -43,7 +43,7 @@ export const Field = () => {
   );
 
   useInterval(
-    () => setSnake(nextSnakePosition(snake, direction)),
+    () => setSnake(nextSnakePosition(snake, direction, incrementScore)),
     intersectsWithBody ? null : 500
   );
 

@@ -34,7 +34,7 @@ const eatFood = (head, food) => {
   return head.x === food.x && head.y === food.y;
 };
 
-const nextSnakePosition = (snake, direction) => {
+const nextSnakePosition = (snake, direction, incrementScore) => {
   const [head] = snake;
   const newHeadPosition = {
     x: limitByField(head.x + direction.x),
@@ -42,6 +42,7 @@ const nextSnakePosition = (snake, direction) => {
   };
 
   if (eatFood(newHeadPosition, food)) {
+    incrementScore();
     food = {
       x: Math.floor(Math.random() * FIELD_SIZE),
       y: Math.floor(Math.random() * FIELD_SIZE),

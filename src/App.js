@@ -1,7 +1,14 @@
+import { useState } from "react";
 import "./App.css";
 import { Field } from "./components/Field/Field";
 
 function App() {
+  const [score, setScore] = useState(0);
+
+  const incrementScore = () => {
+    setScore((prevScore) => prevScore + 1);
+  };
+
   return (
     <div
       className="App"
@@ -14,7 +21,8 @@ function App() {
       }}
     >
       Snake
-      <Field />
+      <p>Score: {score}</p>
+      <Field incrementScore={incrementScore} />
     </div>
   );
 }
