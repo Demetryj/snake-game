@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Cell } from "../Cell/Cell";
-import { GameOwer } from "../Game/GameOwer";
+import { GameOwer } from "../GameOwer/GameOwer";
 import { useInterval } from "../../hooks/useInterval";
 import { FIELD_ROW, DIRECTION } from "../../constants/constants";
 import { getCell, nextSnakePosition } from "../../utils//moveSnake";
