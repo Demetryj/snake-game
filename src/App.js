@@ -37,7 +37,7 @@ function App() {
     >
       Snake
       <p>Score: {score}</p>
-      <Field incrementScore={incrementScore} />
+      <Field score={score} incrementScore={incrementScore} />
     </div>
   );
 }
