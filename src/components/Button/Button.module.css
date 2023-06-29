@@ -1,0 +1,19 @@
+.button {
+  padding: 16px 0px;
+  width: 200px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+
+  transition: color 300ms, background-color 300ms;
+}
+
+.button:hover,
+.button:focus {
+  color: green;
+  background-color: white;
+}
