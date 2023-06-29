@@ -4,11 +4,12 @@ import { GameOwer } from "../Game/GameOwer";
 import { useInterval } from "../../hooks/useInterval";
 import { FIELD_ROW, DIRECTION } from "../../constants/constants";
 import { getCell, nextSnakePosition } from "../../utils//moveSnake";
+import css from "./Field.module.css";
 
 export const Field = ({ score, incrementScore }) => {
   const [snake, setSnake] = useState([{ x: 5, y: 5 }]);
   const [direction, setDirection] = useState(DIRECTION.RIGHT);
-  const [speedOfSnake, setspeedOfSnake] = useState(200);
+  const [speedOfSnake, setspeedOfSnake] = useState(500);
   const [memory, setMemory] = useState(0);
   const [pause, setPause] = useState(false);
 
@@ -116,11 +117,7 @@ export const Field = ({ score, incrementScore }) => {
   );
 
   return (
-    <div
-      style={{
-        display: "flex",
-      }}
-    >
+    <div className={css.field}>
       {intersectsWithBody ? (
         <GameOwer />
       ) : (
