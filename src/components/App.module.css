@@ -1,0 +1,33 @@
+.head {
+  padding: 20px 0;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  color: green;
+}
+
+.playField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score {
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 3px solid red;
+}
