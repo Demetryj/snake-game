@@ -16,6 +16,24 @@
   align-items: center;
 }
 
+.input {
+  margin-bottom: 50px;
+  padding: 2px 5px;
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  background-color: transparent;
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+}
+
 .score {
   margin-bottom: 5px;
   font-size: 20px;
