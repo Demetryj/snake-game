@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import { FIELD_SIZE } from "../constants/constants.js";
 import { Cell } from "../components/Cell/Cell.jsx";
 
@@ -13,17 +14,17 @@ const chooseFood = () => Math.floor(Math.random() * (30 - 1) + 1);
 const getCell = (x, y, snake) => {
   if (food.x === x && food.y === y) {
     if (typeOfFood <= 10) {
-      return <Cell key={x + "first"} cellFirstFood data="first" />;
+      return <Cell key={nanoid()} cellFirstFood data="first" />;
     } else if (typeOfFood > 20) {
-      return <Cell key={x + "second"} cellSecondFood data="second" />;
+      return <Cell key={nanoid()} cellSecondFood data="second" />;
     } else {
-      return <Cell key={x + "third"} cellThirdFood data="third" />;
+      return <Cell key={nanoid()} cellThirdFood data="third" />;
     }
   }
 
   for (const segment of snake) {
     if (segment.x === x && segment.y === y) {
-      return <Cell key={x + "cellSnake"} cellSnake />;
+      return <Cell key={nanoid()} cellSnake />;
     }
   }
 };
