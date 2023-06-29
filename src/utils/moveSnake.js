@@ -13,17 +13,17 @@ const chooseFood = () => Math.floor(Math.random() * (30 - 1) + 1);
 const getCell = (x, y, snake) => {
   if (food.x === x && food.y === y) {
     if (typeOfFood <= 10) {
-      return <Cell cellFirstFood data="first" />;
+      return <Cell key={x + "first"} cellFirstFood data="first" />;
     } else if (typeOfFood > 20) {
-      return <Cell cellSecondFood data="second" />;
+      return <Cell key={x + "second"} cellSecondFood data="second" />;
     } else {
-      return <Cell cellThirdFood data="third" />;
+      return <Cell key={x + "third"} cellThirdFood data="third" />;
     }
   }
 
   for (const segment of snake) {
     if (segment.x === x && segment.y === y) {
-      return <Cell cellSnake />;
+      return <Cell key={x + "cellSnake"} cellSnake />;
     }
   }
 };
