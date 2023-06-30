@@ -1,6 +1,8 @@
 import css from "./Table.module.css";
 
 export const Table = ({ users }) => {
+  const champions = users.sort((a, b) => b.points - a.points).slice(0, 5);
+
   return (
     <>
       <p className={css.title}>Champions</p>
@@ -14,7 +16,7 @@ export const Table = ({ users }) => {
         </thead>
 
         <tbody>
-          {users.map(({ _id, userName, points }, index) => (
+          {champions.map(({ _id, userName, points }, index) => (
             <tr key={_id} className={css.bodyRow}>
               <td className={css.bodyCell}>{index + 1}</td>
               <td className={css.bodyCell}>{userName}</td>
