@@ -2,23 +2,42 @@
 
 ## Implemented Requirements
 
-!● Input name
-!● Counting points
-!● List of record holders (max 5 users)
-!● Snake`s move: left (ArrowLeft), right (ArrowRight), forward (ArrowUp), back   (ArrowDown)
-!● Pause/start (Space)
-!● Game over, when snake crosses its body
-!● Three types of feed
-!● First 1 point (white color)
-!● Second 5 point (blue color)
-!● Third 10 point (orange color)
-!● Every 50 point snake`s speed is increase
+1. Input name
+2. Counting points
+3. List of record holders (max 5 users)
+4. Snake`s move: left (ArrowLeft), right (ArrowRight), forward (ArrowUp), back (ArrowDown)
+5. Pause/start (Space)
+6. Game over, when snake crosses its body
+7. Three types of feed
+8. First 1 point (white color)
+9. Second 5 point (blue color)
+10. Third 10 point (orange color)
+11. Every 50 point snake`s speed is increase
+
+###
 
 ![Alt text](image-1.png)
 
+Enter a name and click the button "Start game".\
+If the name is not entered, the game will not start and a warning will appear.\
+
 ![Alt text](image-2.png)
 
+The direction of movement of the snake is selected by the arrows on the keyboard.\
+If you click on the button "Finish", the game will end, the player's result will be saved and the first screen will appear.\
+
 ![Alt text](image-3.png)
+
+Game over, when snake crosses its body.\
+If you click on the button "Finish", the game will end, the player's result will be saved and the first screen will appear.\
+If you click on the button "New game", a playing field will appear. The previous result will not be saved.
+\
+\
+\
+\
+\
+\
+\
 
 # Getting Started with Create React App
 
