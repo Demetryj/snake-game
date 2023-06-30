@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Field } from "./Field/Field";
 import { Button } from "./Button/Button";
 import { Table } from "./Table/Table";
+import { GameOwer } from "./GameOwer/GameOwer";
 import { fetchUsers, createUser } from "../api/apiUsers";
 import css from "./App.module.css";
 
@@ -11,12 +12,49 @@ export const App = () => {
   const [userName, setUserName] = useState("");
   const [score, setScore] = useState(0);
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [points, setPoints] = useState(1);
+  const [points, setPoints] = useState(null);
   const [playGame, setPlayGame] = useState(false);
+  const [finishGame, setFinishGame] = useState(false);
 
-  const handleClick = () => {
-    setPlayGame(!playGame);
+  const handleClickStartBtn = () => {
+    if (userName === "") {
+      toast.error("Please, enter name.");
+      return;
+    }
+
+    const player = users.find((user) => user.userName === userName);
+
+    if (player) {
+      toast.error("This name is in use. Please, enter an other name.");
+      return;
+    }
+
+    setPlayGame(true);
+    setFinishGame(false);
+  };
+
+  const handleClickFinishBtn = async () => {
+    if (score > 0) {
+      try {
+        await createUser({ userName, points: score.toString() });
+        const newUsersList = await fetchUsers();
+        setUsers(newUsersList);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    setScore(0);
+    setPlayGame(false);
+    setFinishGame(false);
+    setPoints(null);
+    setUserName("");
+  };
+
+  const handleClickNewGameBtn = () => {
+    setPlayGame(true);
+    setScore(0);
+    setFinishGame(false);
   };
 
   const handleInput = (e) => {
@@ -24,14 +62,14 @@ export const App = () => {
   };
 
   const incrementScore = () => {
-    setScore((prevScore) => prevScore + points);
+    setScore(score + points);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const usersList = await fetchUsers();
-        setUsers(usersList.sort((a, b) => b.points - a.points).slice(0, 5));
+        setUsers(usersList);
       } catch (error) {
         console.log(error.message);
       }
@@ -52,7 +90,7 @@ export const App = () => {
     } else {
       setPoints(1);
     }
-  }, [score]);
+  });
 
   return (
     <main>
@@ -69,16 +107,36 @@ export const App = () => {
               placeholder="Enter name"
               onChange={handleInput}
             />
-            <Button handleClick={handleClick}>Start game</Button>
+            <Button handleClick={handleClickStartBtn}>Start game</Button>
             {users.length > 0 && <Table users={users} />}
           </>
         ) : (
           <>
-            <p className={css.score}>Score: {score}</p>
-            <div className={css.wrapper}>
-              <Field score={score} incrementScore={incrementScore} />
+            <div className={css.wrapperText}>
+              <p className={css.text}>User: {userName}</p>
+              <p className={css.text}>Score: {score}</p>
             </div>
-            <Button handleClick={handleClick}>Finish</Button>
+
+            {finishGame ? (
+              <>
+                <GameOwer />
+                <div className={css.wrapperBtn}>
+                  <Button handleClick={handleClickNewGameBtn}>New game</Button>
+                  <Button handleClick={handleClickFinishBtn}>Finish</Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={css.wrapper}>
+                  <Field
+                    score={score}
+                    incrementScore={incrementScore}
+                    finishPlay={() => setFinishGame(true)}
+                  />
+                </div>
+                <Button handleClick={handleClickFinishBtn}>Finish</Button>
+              </>
+            )}
           </>
         )}
       </section>
