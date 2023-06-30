@@ -1,3 +1,25 @@
+# SnakeGame
+
+## Implemented Requirements
+
+● Input name
+● Counting points
+● List of record holders (max 5 users)
+● Snake`s move: left (ArrowLeft), right (ArrowRight), forward (ArrowUp), back   (ArrowDown)
+● Pause/start (Space)
+● Game over, when snake crosses its body
+● Three types of feed
+● First 1 point (white color)
+● Second 5 point (blue color)
+● Third 10 point (orange color)
+● Every 50 point snake`s speed is increase
+
+![Alt text](image-1.png)
+
+![Alt text](image-2.png)
+
+![Alt text](image-3.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
