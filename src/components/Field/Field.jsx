@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { Cell } from "../Cell/Cell";
-import { GameOwer } from "../GameOwer/GameOwer";
 import { useInterval } from "../../hooks/useInterval";
 import { FIELD_ROW, DIRECTION } from "../../constants/constants";
 import { getCell, nextSnakePosition } from "../../utils//moveSnake";
 import css from "./Field.module.css";
 
-export const Field = ({ score, incrementScore }) => {
+export const Field = ({ score, incrementScore, finishPlay }) => {
   const [snake, setSnake] = useState([{ x: 5, y: 5 }]);
   const [direction, setDirection] = useState(DIRECTION.RIGHT);
   const [speedOfSnake, setspeedOfSnake] = useState(500);
@@ -111,6 +110,10 @@ export const Field = ({ score, incrementScore }) => {
     (item) => item.x === head.x && item.y === head.y
   );
 
+  if (intersectsWithBody) {
+    finishPlay();
+  }
+
   useInterval(
     () => setSnake(nextSnakePosition(snake, direction, incrementScore)),
     pause ? null : speedOfSnake
@@ -118,19 +121,15 @@ export const Field = ({ score, incrementScore }) => {
 
   return (
     <div className={css.field}>
-      {intersectsWithBody ? (
-        <GameOwer />
-      ) : (
-        FIELD_ROW.map((x) => {
-          return (
-            <div key={x + "X"}>
-              {FIELD_ROW.map(
-                (y) => getCell(x, y, snake) || <Cell key={y + "Y"} />
-              )}
-            </div>
-          );
-        })
-      )}
+      {FIELD_ROW.map((x) => {
+        return (
+          <div key={x + "X"}>
+            {FIELD_ROW.map(
+              (y) => getCell(x, y, snake) || <Cell key={y + "Y"} />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
